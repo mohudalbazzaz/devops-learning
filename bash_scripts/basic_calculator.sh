@@ -20,7 +20,7 @@
 
 #!/usr/bin/env bash
 
-#set -eux
+set -eux
 
 
 calculator() {
@@ -30,16 +30,22 @@ calculator() {
     echo "Numbers selected: $num_1, $num_2" 
 
     if [ $operation == "+" ]; then
-        result=$(( num_1 + num_2))
+        result=$(( num_1 + num_2 ))
 
     elif [ $operation == "-" ]; then
-        result=$(( num_1 - num_2))
+        result=$(( num_1 - num_2 ))
 
     elif [ $operation == "/" ]; then
-        result=$(( num_1 / num_2))
+        if [ $num_2 == 0 ]; then
+            echo "Cannot divide by 0!"
+            return 1
+        else
+            result=$(( num_1 / num_2 ))
+        fi
+        result=$(( num_1 / num_2 ))
 
     elif [ $operation == "*" ]; then
-        result=$(( num_1 * num_2))
+        result=$(( num_1 * num_2 ))
 
     fi
 
